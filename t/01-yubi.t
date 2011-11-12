@@ -7,7 +7,7 @@ use Data::Dumper;
 
 plan skip_all => 'working sockets required for this test!'
   unless Mojo::IOLoop->new->generate_port;    # Test server
-plan tests => 1;
+plan tests => 2;
 
 use Mojolicious::Lite;
 app->plugin('yubi_verify',
@@ -15,6 +15,7 @@ app->plugin('yubi_verify',
   api_key => 'oBVbNt7IZehZGR99rvq8d6RZ1DM=',
   parallel => 5,
 );
+app->secret('12345678910');
 post '/:otp' => sub {
   my $self = shift;
   my $otp = $self->stash('otp');

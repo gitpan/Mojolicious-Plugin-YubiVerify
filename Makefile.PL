@@ -16,6 +16,7 @@ WriteMakefile(
         'URI::Escape' => 0,
         'MIME::Base64' => 0,
         'Digest::HMAC_SHA1' => 0,
+        'String::Random' => 0,
         'List::Util' => 0,
     },
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },

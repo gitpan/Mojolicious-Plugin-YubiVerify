@@ -11,7 +11,7 @@ use strict;
 use warnings;
 use base 'Mojolicious::Plugin';
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use Mojo::UserAgent;
 use URI::Escape qw(uri_escape);
