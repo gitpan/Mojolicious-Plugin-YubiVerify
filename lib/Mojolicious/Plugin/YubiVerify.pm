@@ -11,7 +11,7 @@ use strict;
 use warnings;
 use base 'Mojolicious::Plugin';
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 use Mojo::UserAgent;
 use URI::Escape qw(uri_escape);
@@ -71,7 +71,7 @@ sub register {
                 next if $res->{'status'} ne 'OK';
                 next if !defined $res->{'otp'} or $res->{'otp'} ne $otp;
                 next if !defined $res->{'nonce'} or $res->{'nonce'} ne $nonce;
-                my $key_id = substr($res->{'otp'}, 0, 12);
+                my ($key_id) = ($res->{'otp'} =~ /^(.+)(.{32})$/);
                 my $h = delete $res->{'h'};
                 return ($key_id, ($ret_res ? \@res : ()))
                     if $res->{'status'} eq 'OK' and $h eq
