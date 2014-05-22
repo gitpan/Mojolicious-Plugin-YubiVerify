@@ -15,7 +15,6 @@ app->plugin('yubi_verify',
   api_key => 'oBVbNt7IZehZGR99rvq8d6RZ1DM=',
   parallel => 5,
 );
-app->secret('12345678910');
 post '/:otp' => sub {
   my $self = shift;
   my $otp = $self->stash('otp');
